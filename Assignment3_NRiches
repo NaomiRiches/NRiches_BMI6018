@@ -1,0 +1,226 @@
+### Problem 1: Lists, Sets and Coersion
+
+one_a = [0,1,2,3,4,5,6,7,8,9,0]  #Create a list of integers no fewer than 10 items from 0 to 9.
+print("one_a: ", one_a)
+
+one_b = one_a
+one_b.insert(5, 3)  #Add 3 to the 5th indexed element
+print("one_b: ", one_b)
+
+one_c = [float(x) for x in one_a]  # Coerce all elements in the list to floats using list comprehension
+print("one_c: ", type(one_c[0]))
+
+one_d = set(one_a)  # Coerce the list to a set
+print("one_d: ", type(one_d))
+
+one_e = one_d
+one_e.add(10)  # Using a method, append int 10 to the set
+print("one_e: ", one_e)
+
+one_f = one_e
+one_f.pop() # Using a method, pop an item from the set
+print("one_f: ", one_f)
+
+one_g = one_f # Using a length counting function, count the number of items in the set
+print("Number of items in one_g: ", len(one_g))
+
+# Check if the number of items in the set is the same as the number of items in the list
+print("one_h: The number of items in the set is the same as the number of items in the list: " , 
+      len(one_g) == len(one_a))
+
+# Coerce the set to a list and use the "+" operator combine the list to the list from 1.a
+one_i = list(one_f)  
+one_i = one_i + one_a
+print("one_i: ", one_i)
+
+one_j = one_i  # Coerce 1.i to a set
+one_j = set(one_j)
+print("one_j: ", type(one_j))
+
+# Count the number of elements in the 1.j
+print("one_k: The number of elements in 1.j: ", len(one_j))
+
+
+
+### Problem 2: Dictionary woes
+
+# Combine the three sample dictionaries (given below) into a nested dictionary 
+# (nested in programming means joined), named two_a, ensure the key names are the same as the dictionary names.
+two_patient_dictionary_kinoko = {
+  "name" : "Kinoko",
+  "year" : 2021
+} 
+two_patient_dictionary_dango = {
+  "name" : "Dango",
+  "year" : 2019
+} 
+two_patient_dictionary_mochi  = {
+  "name" : "Mochi",
+  "year" : 2020
+}
+
+
+two_a = {"two_patient_dictionary_kinoko": two_patient_dictionary_kinoko,
+        "two_patient_dictionary_dango": two_patient_dictionary_dango,
+        "two_patient_dictionary_mochi": two_patient_dictionary_mochi}
+print("two_a: ", two_a)
+
+
+# Using keys, retrieve the Dango's name from 2.a
+print("two_b: ", two_a["two_patient_dictionary_dango"]["name"])
+
+# two_c Using keys, update the value of Mochi's year to 2018. This should not be a variable
+#    and should simply update 2.a.
+two_a["two_patient_dictionary_mochi"]["year"] = 2018
+print("two_c: The updated year for Mochi: ", two_a["two_patient_dictionary_mochi"]["year"])
+
+# two_d Manually create a dictionary that has a single level and contains each patient
+#    as the key and the year as the value. Set Mochi's year to 2019.'
+
+two_d_new_patient_dictionary = {
+  "Kinoko" : 2021,
+  "Dango" : 2019,
+  "Mochi" : 2019  
+} 
+print("two_d: ", two_d_new_patient_dictionary)
+
+# two_e Coerce the keys of 2.d into a list
+two_e = list(two_d_new_patient_dictionary)
+print("two_e: " , two_e)
+print("two_e class: ", type(two_e))
+
+# two_f Coerce the values of 2.d into a list
+two_f = list(two_d_new_patient_dictionary.values())
+print("two_f: " , two_f)
+print("two_f class: ", type(two_f))
+
+# two_g Use the zip function to combine 2.e and 2.f into a dictionary again
+two_g = dict(zip(two_e, two_f))
+print("two_g: ", two_g)
+
+
+
+### Problem 3: Set combinations
+
+# Given the predefined sets below and using set methods
+
+three_setA = {1,2,3,4,5}
+three_setB = {2,3,4,5,6}
+three_setC = {3,5,7,9}
+three_setD = {2,4,6,8}
+three_setE = {1,2,3,4}
+
+#three_a Is set E a subset of set A
+print("three_a - Is set E a subset of set A?: ", three_setE.issubset(three_setA))
+
+#three_b Is set E a strict subset of set A
+print("three_b - Is set E a strict subset of set A?: ", three_setE < three_setA)
+
+#three_c Create a set that is the intersection of set A and set B
+three_c = three_setA.intersection(three_setB)
+print("three_c: ", three_c)
+
+#three_d Create a set that is the union of sets C, D and E
+three_d = set.union(three_setC, three_setD, three_setE)
+print("three_d: ", three_d)
+
+#three_e add 9 to the set
+three_d.add(9)
+print("three_e: ", three_d)
+
+#three_f Using == compare this set to the list in one_a
+set_one_a = set(one_a)
+print("three_f: ", three_d == set_one_a)
+
+#three_g Explain why they are not the same. What would you need to change if you
+#    wanted this to be True?
+print("three_g: three_f is FASLE because one_a contains zero. To be true, a zero would have to be added.")
+three_g = three_d
+three_g.add(0)
+print("three_g: three_d with zero added: ", three_g == set_one_a)
+
+
+
+
+### Problem 4: Changing variable types
+
+#For each step you will modify a variable, then append the type of the variable
+#to a list. Do not recreate the list variable, it should be a running list of 
+#types.
+
+#four_a Create a variable of type int with the value of 8
+four_a = 8
+print("four_a: ", four_a)
+
+#four_b Create an empty list 
+four_b = []
+print("four_b: ", type(four_b))
+
+#four_c Using type(), add the type of 4.a to this list
+four_b.append(type(four_a))
+print("four_c: ", four_b)
+
+#four_d Add 0.39 to 4.c
+four_b.append(0.39)
+print("four_d: ", four_b)
+
+#four_e append the type of 0.39 to the list
+four_b.append(type(0.39))
+print("four_e: ", four_b)
+
+#four_f exponentiate to the -10, ie: 4.d^-10,(hint: there might be an artihmetic operator to do so) round it to no 
+#    decimal places, and append to list.
+four_b.append(round(0.39**-10))
+print("four_f: ", four_b)
+
+#four_g append the type to the list
+four_b.append(type(round(0.39**-10)))
+print("four_g: ", four_b)
+
+
+
+
+### Problem 5: More variable type changes
+
+# Continue from where you left off in Problem 4.
+
+#five_a Manually create a dictionary where the values are items in the list from where we left in 
+#    problem 4, and the keys should be their index in the list. Print the dictionary.
+five_a = dict(enumerate(four_b))
+print("five_a: ", five_a)
+
+#five_b Add 300 and coerce it into a string
+five_b = five_a
+five_b.update({5: "300"})
+print("five_a: ", five_a)
+print("five_a class: ", type(five_b[5]))
+
+#five_c append the type to the list
+five_c = four_b
+five_c.append((type(five_b[5])))
+print("five_c: ", five_c)
+
+#five_d slice the string up to the 2nd element
+five_d = five_b
+x = five_d[5]
+x_split = x[0:2]
+print("five_d: ", x_split)
+
+#five_e append the type to the list
+five_e = five_c
+five_e.append(type(x_split))
+print("five_e: ", five_e)
+
+#five_f use list comprehension to convert this into a new list of integers
+five_f = [i for i in five_c if isinstance(i, (int))]
+print("five_f: ", five_f)
+
+#five_g append the type to the list
+five_g = five_f
+five_g.append(type(five_f))
+print("five_g: ", five_g)
+
+#five_h append the type of three_setA to the list
+five_h = five_g
+five_h.append(type(three_setA))
+print("five_h: ", five_h)
